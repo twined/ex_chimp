@@ -13,31 +13,39 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
           [{:ex_chimp, "~> 0.0.1"}]
         end
 
-  2. Ensure ex_chimp is started before your application:
-
-        def application do
-          [applications: [:ex_chimp]]
-        end
-
 ## Usage
 
 Add to your application's config:
 
-    config :ex_chimp,
-      api_key: "yourapikeyhere-us12"
+```elixir
+config :ex_chimp,
+  api_key: "yourapikeyhere-us12"
+```
 
 Get all lists on your account:
 
-    ExChimp.List.all
+```elixir
+ExChimp.List.all
+```
 
 Get all members on a list:
 
-    ExChimp.List.members("your_list_id")
+```elixir
+ExChimp.List.members("your_list_id")
+```
 
 Add a member to a list
 
-    # With merge fields
-    ExChimp.List.add_member("your_list_id", :subscribed, "sub@email.com", 
-                            %{"FULL_NAME" => "Full name"})
-    # Without
-    ExChimp.List.add_member("your_list_id", :subscribed, "sub@email.com")
+```elixir
+# With merge fields
+ExChimp.List.add_member("your_list_id", :subscribed, "sub@email.com", 
+                        %{"FULL_NAME" => "Full name"})
+# Without
+ExChimp.List.add_member("your_list_id", :subscribed, "sub@email.com")
+```
+
+## Mix tasks
+
+To show lists on your account:
+
+    $ mix exchimp.lists
