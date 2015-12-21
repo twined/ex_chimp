@@ -49,3 +49,7 @@ ExChimp.List.add_member("your_list_id", :subscribed, "sub@email.com")
 To show lists on your account:
 
     $ mix exchimp.lists
+
+## Todo
+
+Tests.
