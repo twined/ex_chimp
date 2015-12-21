@@ -23,9 +23,9 @@ defmodule ExChimp.Mixfile do
   defp package do
     [maintainers: ["Twined Networks"],
      licenses: ["MIT"],
-     files: ["assets", "config", "lib", "priv", "test", "web",
+     files: ["config", "lib", "test",
              "mix.exs", "README.md", ".travis.yml", "CHANGELOG.md"],
-     links: %{github: "https://github.com/twined/brando"}]
+     links: %{github: "https://github.com/twined/ex_chimp"}]
   end
 
   def application do
@@ -34,6 +34,7 @@ defmodule ExChimp.Mixfile do
 
   defp deps do
     [{:httpoison, "~> 0.6"},
-     {:poison, "~> 1.5"}]
+     {:poison, "~> 1.5"},
+     {:exvcr, "~> 0.6", only: :test}]
   end
 end
