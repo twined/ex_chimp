@@ -8,19 +8,19 @@ defmodule ExChimp.Client do
     base_url <> url
   end
 
+  def process_response_body(""),
+    do: nil
+
+  def process_response_body(body) do
+    Poison.decode!(body)
+  end
+
   defp process_request_headers(headers) do
     base_api_key = Base.encode64(":#{api_key}")
     Enum.into(headers, [
       {"Authorization", "Basic #{base_api_key}"},
       {"Content-type", "application/json"}
     ])
-  end
-
-  def process_response_body(""),
-    do: nil
-
-  def process_response_body(body) do
-    Poison.decode!(body)
   end
 
   defp base_url do

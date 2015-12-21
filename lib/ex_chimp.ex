@@ -6,14 +6,14 @@ defmodule ExChimp do
 
   ## Usage
 
-  Add to your application's config:
+  Add the following to your application's config:
 
       config :ex_chimp,
         api_key: "yourapikeyhere-us12"
 
   Get all lists on your account:
 
-      ExChimp.List.all
+      ExChimp.List.all()
 
   Get all members on a list:
 
