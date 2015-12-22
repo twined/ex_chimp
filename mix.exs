@@ -23,7 +23,7 @@ defmodule ExChimp.Mixfile do
   defp package do
     [maintainers: ["Twined Networks"],
      licenses: ["MIT"],
-     files: ["config", "lib", "test",
+     files: ["config", "lib", "test", "LICENSE",
              "mix.exs", "README.md", ".travis.yml", "CHANGELOG.md"],
      links: %{github: "https://github.com/twined/ex_chimp"}]
   end
