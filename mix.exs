@@ -1,7 +1,7 @@
 defmodule ExChimp.Mixfile do
   use Mix.Project
 
-  @version "0.0.1"
+  @version "0.0.2"
   @description "Basic/minimal Mailchimp API client."
 
   def project do
@@ -34,7 +34,7 @@ defmodule ExChimp.Mixfile do
 
   defp deps do
     [{:httpoison, "~> 0.6"},
-     {:poison, "~> 1.5"},
+     {:poison, "~> 1.5 or ~> 2.0"},
      {:exvcr, "~> 0.6", only: :test}]
   end
 end
