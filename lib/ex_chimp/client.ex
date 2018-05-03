@@ -5,7 +5,7 @@ defmodule ExChimp.Client do
   use HTTPoison.Base
 
   def process_url(url) do
-    base_url <> url
+    base_url() <> url
   end
 
   def process_response_body(""),
@@ -16,7 +16,7 @@ defmodule ExChimp.Client do
   end
 
   defp process_request_headers(headers) do
-    base_api_key = Base.encode64(":#{api_key}")
+    base_api_key = Base.encode64(":#{api_key()}")
     Enum.into(headers, [
       {"Authorization", "Basic #{base_api_key}"},
       {"Content-type", "application/json"}
