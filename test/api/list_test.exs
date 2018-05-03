@@ -31,4 +31,14 @@ defmodule ExChimp.ListTest do
       assert body == Poison.decode!(@list_members_success_json)
     end
   end
+
+  test "add member to list" do
+    use_cassette :stub, [url: "https://us12.api.mailchimp.com/3.0/lists/asdf1234/members",
+                         method: "post",
+                         status_code: ["HTTP/1.1", 200, "OK"],
+                         body: @list_add_member_success_json] do
+      {:ok, body} = ExChimp.List.add_member("asdf1234", :subscribed, "urist.mcvankab+3@freddiesjokes.com")
+      assert body == Poison.decode!(@list_add_member_success_json)
+    end
+  end
 end

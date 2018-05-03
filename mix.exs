@@ -11,8 +11,8 @@ defmodule ExChimp.Mixfile do
      description: @description,
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     deps: deps,
-     package: package,
+     deps: deps(),
+     package: package(),
      # Docs
      name: "ExChimp",
      docs: [source_ref: "v#{@version}",
@@ -33,8 +33,8 @@ defmodule ExChimp.Mixfile do
   end
 
   defp deps do
-    [{:httpoison, "~> 0.6"},
-     {:poison, "~> 1.5 or ~> 2.0"},
-     {:exvcr, "~> 0.6", only: :test}]
+    [{:httpoison, "~> 1.1"},
+     {:poison, "~> 1.5 or ~> 2.0 or ~> 3.1"},
+     {:exvcr, "~> 0.10", only: :test}]
   end
 end
