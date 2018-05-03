@@ -33,7 +33,7 @@ defmodule ExChimp.Mixfile do
   end
 
   defp deps do
-    [{:httpoison, "~> 1.1"},
+    [{:httpoison, "~> 0.10 or ~> 1.1"},
      {:poison, "~> 1.5 or ~> 2.0 or ~> 3.1"},
      {:exvcr, "~> 0.10", only: :test}]
   end
