@@ -1,13 +1,13 @@
 defmodule ExChimp.Mixfile do
   use Mix.Project
 
-  @version "0.0.2"
+  @version "0.0.3"
   @description "Basic/minimal Mailchimp API client."
 
   def project do
     [app: :ex_chimp,
      version: @version,
-     elixir: "~> 1.1",
+     elixir: "~> 1.2",
      description: @description,
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
