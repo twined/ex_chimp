@@ -17,10 +17,11 @@ defmodule ExChimp.Client do
 
   defp process_request_headers(headers) do
     base_api_key = Base.encode64(":#{api_key()}")
-    Enum.into(headers, [
+    (headers ++ [
       {"Authorization", "Basic #{base_api_key}"},
       {"Content-type", "application/json"}
     ])
+    |> Enum.uniq_by(fn {key, _} -> key end)
   end
 
   defp base_url do
