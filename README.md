@@ -8,9 +8,11 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 
   1. Add ex_chimp to your list of dependencies in `mix.exs`:
 
-        def deps do
-          [{:ex_chimp, "~> 0.0.1"}]
-        end
+  ```elixir
+  def deps do
+    [{:ex_chimp, "~> 0.0.4"}]
+  end
+  ```
 
 ## Usage
 
