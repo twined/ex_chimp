@@ -1,7 +1,7 @@
 language: elixir
-elixir: 1.6
+elixir: 1.10
 otp_release:
-  - 20.1
+  - 22.0
 sudo: false
 before_script:
   - mix local.hex --force
