@@ -6,14 +6,14 @@ defmodule ExChimp.List do
 
   @type member_status :: :subscribed | :unsubscribed | :cleaned | :pending
 
-  @spec all() :: {:ok, [Map.t]}
+  @spec all() :: {:ok, [map]}
   def all do
     query =
       %{}
       |> Map.put(:fields, "lists.id,lists.name,lists.stats.member_count")
       |> Map.put(:count, 100)
       |> Map.put(:offset, 0)
-      |> URI.encode_query
+      |> URI.encode_query()
 
     case Client.get("lists?#{query}") do
       {:ok, %{body: %{"lists" => lists}}} -> {:ok, lists}
@@ -21,7 +21,7 @@ defmodule ExChimp.List do
     end
   end
 
-  @spec members(String.t) :: {:ok, Map.t} | {:error, String.t}
+  @spec members(binary) :: {:ok, map} | {:error, binary}
   def members(list_id) do
     case Client.get("lists/#{list_id}/members") do
       {:ok, %{body: %{"status" => 404, "detail" => error}}} -> {:error, error}
@@ -29,22 +29,23 @@ defmodule ExChimp.List do
     end
   end
 
-  @spec add_member(String.t, member_status, String.t, Map.t) :: {:ok, Map.t} | {:error, String.t}
+  @spec add_member(binary, member_status, binary, map) ::
+          {:ok, map} | {:error, binary}
   def add_member(list_id, status, email, merge_fields) do
     %{}
     |> Map.put(:email_address, email)
     |> Map.put(:status, status)
     |> Map.put(:merge_fields, merge_fields)
-    |> Poison.encode!
+    |> Jason.encode!()
     |> do_add_member(list_id)
   end
 
-  @spec add_member(String.t, member_status, String.t) :: {:ok, Map.t} | {:error, String.t}
+  @spec add_member(binary, member_status, binary) :: {:ok, map} | {:error, binary}
   def add_member(list_id, status, email) do
     %{}
     |> Map.put(:email_address, email)
     |> Map.put(:status, status)
-    |> Poison.encode!
+    |> Jason.encode!()
     |> do_add_member(list_id)
   end
 

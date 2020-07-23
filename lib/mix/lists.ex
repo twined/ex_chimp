@@ -6,12 +6,14 @@ defmodule Mix.Tasks.Exchimp.Lists do
     IO.puts("-------------------")
     IO.puts("id - name - members")
     IO.puts("-------------------")
+
     case ExChimp.List.all() do
       {:ok, lists} ->
         for %{"id" => id, "name" => name, "stats" => %{"member_count" => members}} <- lists do
           IO.puts("#{id} - #{name} - #{members}")
         end
     end
+
     IO.puts("\n")
   end
 end

@@ -6,7 +6,7 @@ defmodule ExChimp.ClientTest do
   end
 
   test "process_url" do
-    assert ExChimp.Client.process_url("test/url")
-           == "https://us12.api.mailchimp.com/3.0/test/url"
+    assert ExChimp.Client.process_request_url("test/url") ==
+             "https://us12.api.mailchimp.com/3.0/test/url"
   end
 end

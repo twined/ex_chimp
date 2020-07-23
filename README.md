@@ -1,7 +1,6 @@
 # ExChimp
 
-A simple, minimalistic Mailchimp client.
-Currently ExChimp only supports a few basic API calls.
+A simple, minimalistic Mailchimp client basically for just adding members to lists.
 
 ## Installation
 
@@ -18,27 +17,20 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 Add to your application's config:
 
 ```elixir
-config :ex_chimp,
-  api_key: "yourapikeyhere-us12"
+config :ex_chimp, api_key: "yourapikeyhere-us12"
 ```
 
 Get all lists on your account:
 
 ```elixir
-ExChimp.List.all
-```
-
-Get all members on a list:
-
-```elixir
-ExChimp.List.members("your_list_id")
+ExChimp.List.all()
 ```
 
 Add a member to a list
 
 ```elixir
 # With merge fields
-ExChimp.List.add_member("your_list_id", :subscribed, "sub@email.com", 
+ExChimp.List.add_member("your_list_id", :subscribed, "sub@email.com",
                         %{"FULL_NAME" => "Full name"})
 # Without
 ExChimp.List.add_member("your_list_id", :subscribed, "sub@email.com")
@@ -49,7 +41,3 @@ ExChimp.List.add_member("your_list_id", :subscribed, "sub@email.com")
 To show lists on your account:
 
     $ mix exchimp.lists
-
-## Todo
-
-Tests.
