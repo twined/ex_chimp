@@ -46,8 +46,8 @@ defmodule ExChimp.Mixfile do
     [
       {:httpoison, "~> 0.10 or ~> 1.1"},
       {:jason, "~> 1.0"},
-      # {:poison, "~> 1.5 or ~> 2.0 or ~> 3.1"},
-      {:exvcr, "~> 0.10", only: :test}
+      {:exvcr, "~> 0.10", only: :test},
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
     ]
   end
 end
