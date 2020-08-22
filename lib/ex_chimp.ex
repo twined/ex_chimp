@@ -1,8 +1,6 @@
 defmodule ExChimp do
   @moduledoc """
-  A simple, minimalistic Mailchimp client.
-
-  Currently ExChimp only supports a few basic API calls.
+  A simple, minimalistic Mailchimp client basically for just adding members to lists.
 
   ## Usage
 
@@ -15,10 +13,6 @@ defmodule ExChimp do
 
       ExChimp.List.all()
 
-  Get all members on a list:
-
-      ExChimp.List.members("your_list_id")
-
   Add a member to a list
 
       # With merge fields
@@ -28,7 +22,5 @@ defmodule ExChimp do
       ExChimp.List.add_member("your_list_id", :subscribed, "sub@email.com")
 
   """
-  def config(key) do
-    Application.get_env(:ex_chimp, key)
-  end
+  def config(key), do: Application.get_env(:ex_chimp, key)
 end
