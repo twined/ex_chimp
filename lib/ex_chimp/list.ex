@@ -31,11 +31,12 @@ defmodule ExChimp.List do
 
   @spec add_member(binary, member_status, binary, map) ::
           {:ok, map} | {:error, binary}
-  def add_member(list_id, status, email, merge_fields) do
+  def add_member(list_id, status, email, merge_fields, other_fields \\ %{}) do
     %{}
     |> Map.put(:email_address, email)
     |> Map.put(:status, status)
     |> Map.put(:merge_fields, merge_fields)
+    |> Map.merge(other_fields)
     |> Jason.encode!()
     |> do_add_member(list_id)
   end
