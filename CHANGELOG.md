@@ -1,3 +1,9 @@
+## v0.0.5 (2020-09-01)
+
+* Enhancements
+  * Add `other_fields` param to `List.add_member`. Useful for adding gdpr field.
+
+
 ## v0.0.4 (2020-07-23)
 
 * Enhancements

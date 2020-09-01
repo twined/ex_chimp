@@ -10,7 +10,7 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 
   ```elixir
   def deps do
-    [{:ex_chimp, "~> 0.0.4"}]
+    [{:ex_chimp, "~> 0.0.5"}]
   end
   ```
 
@@ -32,8 +32,22 @@ Add a member to a list
 
 ```elixir
 # With merge fields
-ExChimp.List.add_member("your_list_id", :subscribed, "sub@email.com",
-                        %{"FULL_NAME" => "Full name"})
+ExChimp.List.add_member(
+  "your_list_id",
+  :subscribed,
+  "sub@email.com",
+  %{"FULL_NAME" => "Full name"}
+)
+
+# With merge fields and gdpr switch
+ExChimp.List.add_member(
+  "your_list_id",
+  :subscribed,
+  "sub@email.com",
+  %{"FULL_NAME" => "Full name"},
+  %{"marketing_permissions" => [%{marketing_permission_id: "bb4ae547e5", enabled: true}]}
+)
+
 # Without
 ExChimp.List.add_member("your_list_id", :subscribed, "sub@email.com")
 ```
