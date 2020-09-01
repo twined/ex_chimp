@@ -29,7 +29,7 @@ defmodule ExChimp.List do
     end
   end
 
-  @spec add_member(binary, member_status, binary, map) ::
+  @spec add_member(binary, member_status, binary, map, map) ::
           {:ok, map} | {:error, binary}
   def add_member(list_id, status, email, merge_fields, other_fields \\ %{}) do
     %{}
