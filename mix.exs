@@ -39,7 +39,7 @@ defmodule ExChimp.Mixfile do
   end
 
   def application do
-    [applications: [:logger, :httpoison]]
+    [applications: [:logger, :httpoison, :jason]]
   end
 
   defp deps do
