@@ -37,7 +37,7 @@ defmodule ExChimp.ListTest do
   test "add member to list" do
     use_cassette :stub,
       url: "https://us12.api.mailchimp.com/3.0/lists/asdf1234/members",
-      method: "post",
+      method: "put",
       status_code: ["HTTP/1.1", 200, "OK"],
       body: @list_add_member_success_json do
       {:ok, body} =

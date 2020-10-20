@@ -37,7 +37,6 @@ defmodule ExChimp.List do
     |> Map.put(:status, status)
     |> Map.put(:merge_fields, merge_fields)
     |> Map.merge(other_fields)
-    |> Jason.encode!()
     |> do_add_member(list_id)
   end
 
@@ -46,14 +45,32 @@ defmodule ExChimp.List do
     %{}
     |> Map.put(:email_address, email)
     |> Map.put(:status, status)
-    |> Jason.encode!()
     |> do_add_member(list_id)
   end
 
-  defp do_add_member(data, list_id) do
-    case Client.post("lists/#{list_id}/members", data) do
+  @spec destroy_member(binary, binary) :: {:ok, map} | {:error, binary}
+  def destroy_member(list_id, email) do
+    url = "lists/#{list_id}/members/#{md5_sum(email)}/actions/delete-permanent"
+
+    case Client.post(url, "") do
       {:ok, %{body: %{"status" => 400, "detail" => error}}} -> {:error, error}
       {:ok, %{body: body}} -> {:ok, body}
     end
   end
+
+  defp do_add_member(data, list_id) do
+    url = "lists/#{list_id}/members/#{hash_email(data)}"
+
+    case Client.put(url, Jason.encode!(data)) do
+      {:ok, %{body: %{"status" => 400, "detail" => error}}} -> {:error, error}
+      {:ok, %{body: body}} -> {:ok, body}
+    end
+  end
+
+  defp hash_email(%{email_address: email}), do: md5_sum(email)
+
+  defp md5_sum(binary),
+    do:
+      :crypto.hash(:md5, String.downcase(binary))
+      |> Base.encode16(case: :lower)
 end
