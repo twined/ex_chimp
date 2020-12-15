@@ -56,6 +56,9 @@ ExChimp.List.add_member(
   %{"marketing_permissions" => [%{marketing_permission_id: "bb4ae547e5", enabled: true}]}
 )
 
+# To get the `marketing_permission_id` you can add a dummy member and extract from the `marketing_permissions` key in the response:
+ExChimp.List.add_member("your_list_id", :subscribed, "dummy@email.com")
+
 # Without
 ExChimp.List.add_member("your_list_id", :subscribed, "sub@email.com")
 
