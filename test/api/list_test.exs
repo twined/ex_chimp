@@ -25,7 +25,7 @@ defmodule ExChimp.ListTest do
       method: "get",
       status_code: ["HTTP/1.1", 200, "OK"],
       body: @lists_success_json do
-      {:ok, body} = List.all()
+      {:ok, body} = List.all("yourapikey-us12")
       assert body == Map.get(Jason.decode!(@lists_success_json), "lists")
     end
   end
@@ -36,7 +36,7 @@ defmodule ExChimp.ListTest do
       method: "get",
       status_code: ["HTTP/1.1", 200, "OK"],
       body: @list_members_success_json do
-      {:ok, body} = List.members("asdf1234")
+      {:ok, body} = List.members("yourapikey-us12", "asdf1234")
       assert body == Jason.decode!(@list_members_success_json)
     end
   end
@@ -47,7 +47,7 @@ defmodule ExChimp.ListTest do
       method: "put",
       status_code: ["HTTP/1.1", 200, "OK"],
       body: @list_add_member_success_json do
-      {:ok, body} = List.add_member("asdf1234", :subscribed, @test_email)
+      {:ok, body} = List.add_member("yourapikey-us12", "asdf1234", :subscribed, @test_email)
 
       assert body == Jason.decode!(@list_add_member_success_json)
     end

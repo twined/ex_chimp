@@ -1,3 +1,10 @@
+## v0.1.0 (2021-11-24)
+
+* BREAKING: Instead of setting `api_key` in config, we pass it as first arg,
+  so `List.all()` becomes `List.all("your_api_key")`. This change was neccessary
+  to work with multiple api keys in the same application.
+  
+
 ## v0.0.6 (2020-10-20)
 
 * Enhancements

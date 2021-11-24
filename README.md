@@ -16,16 +16,10 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 
 ## Usage
 
-Add to your application's config:
-
-```elixir
-config :ex_chimp, api_key: "yourapikeyhere-us12"
-```
-
 Get all lists on your account:
 
 ```elixir
-ExChimp.List.all()
+ExChimp.List.all("my_api_key")
 ```
 
 Add a member to a list
@@ -33,6 +27,7 @@ Add a member to a list
 ```elixir
 # With merge fields
 ExChimp.List.add_member(
+  "my_api_key",
   "your_list_id",
   :subscribed,
   "sub@email.com",
@@ -41,6 +36,7 @@ ExChimp.List.add_member(
 
 # Update member
 ExChimp.List.add_member(
+  "my_api_key",
   "your_list_id",
   :subscribed,
   "sub@email.com",
@@ -49,6 +45,7 @@ ExChimp.List.add_member(
 
 # With merge fields and gdpr switch
 ExChimp.List.add_member(
+  "my_api_key",
   "your_list_id",
   :subscribed,
   "sub@email.com",
@@ -57,17 +54,17 @@ ExChimp.List.add_member(
 )
 
 # To get the `marketing_permission_id` you can add a dummy member and extract from the `marketing_permissions` key in the response:
-ExChimp.List.add_member("your_list_id", :subscribed, "dummy@email.com")
+ExChimp.List.add_member("my_api_key", "your_list_id", :subscribed, "dummy@email.com")
 
 # Without
-ExChimp.List.add_member("your_list_id", :subscribed, "sub@email.com")
+ExChimp.List.add_member("my_api_key", "your_list_id", :subscribed, "sub@email.com")
 
 # Destroy member
-ExChimp.List.destroy_member("your_list_id", "member@to.destroy.com")
+ExChimp.List.destroy_member("my_api_key", "your_list_id", "member@to.destroy.com")
 ```
 
 ## Mix tasks
 
 To show lists on your account:
 
-    $ mix exchimp.lists
+    $ mix exchimp.lists my_api_key
