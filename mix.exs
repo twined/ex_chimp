@@ -2,7 +2,8 @@ defmodule ExChimp.Mixfile do
   use Mix.Project
 
   @source_url "https://github.com/twined/ex_chimp"
-  @version "0.0.6"
+  @version "0.1.0"
+  @description "Basic/minimal Mailchimp API client."
 
   def project do
     [

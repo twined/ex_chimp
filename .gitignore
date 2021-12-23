@@ -26,4 +26,5 @@ ex_chimp-*.tar
 /tmp/
 
 ## Misc.
-/.vscode/
+/.elixir_ls
+/.vscode
