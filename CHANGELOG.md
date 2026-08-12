@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## v0.2.0 (2026-06-21)
+
+* Switch HTTP client from HTTPoison to [Req](https://hex.pm/packages/req),
+  dropping the `httpoison`/`hackney` dependency chain. The public API and
+  return shapes are unchanged.
+* BREAKING: Requires Elixir ~> 1.12 (was ~> 1.2), as required by Req.
+
 ## v0.1.0 (2021-11-24)
 
 * BREAKING: Instead of setting `api_key` in config, we pass it as first arg,

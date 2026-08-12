@@ -3,7 +3,7 @@ defmodule Mix.Tasks.Exchimp.Lists do
 
   def run(args) do
     api_key = List.first(args)
-    Application.ensure_all_started(:httpoison)
+    Application.ensure_all_started(:req)
     IO.puts("-------------------")
     IO.puts("id - name - members")
     IO.puts("-------------------")

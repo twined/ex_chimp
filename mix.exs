@@ -2,15 +2,14 @@ defmodule ExChimp.Mixfile do
   use Mix.Project
 
   @source_url "https://github.com/twined/ex_chimp"
-  @version "0.1.0"
-  @description "Basic/minimal Mailchimp API client."
+  @version "0.2.0"
 
   def project do
     [
       app: :ex_chimp,
       name: "ExChimp",
       version: @version,
-      elixir: "~> 1.2",
+      elixir: "~> 1.12",
       build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
       deps: deps(),
@@ -28,7 +27,7 @@ defmodule ExChimp.Mixfile do
         "config",
         "lib",
         "test",
-        "LICENSE",
+        "LICENSE.md",
         "mix.exs",
         "README.md",
         ".travis.yml",
@@ -42,14 +41,14 @@ defmodule ExChimp.Mixfile do
   end
 
   def application do
-    [applications: [:logger, :httpoison, :jason]]
+    [extra_applications: [:logger]]
   end
 
   defp deps do
     [
-      {:httpoison, "~> 0.10 or ~> 1.1"},
+      {:req, "~> 0.5 or ~> 1.0"},
       {:jason, "~> 1.0"},
-      {:exvcr, "~> 0.10", only: :test},
+      {:plug, "~> 1.0", only: :test},
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
     ]
   end
