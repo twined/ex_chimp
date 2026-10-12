@@ -17,7 +17,7 @@ dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:ex_chimp, "~> 0.0.6"}
+    {:ex_chimp, "~> 0.2"}
   ]
 end
 ```
